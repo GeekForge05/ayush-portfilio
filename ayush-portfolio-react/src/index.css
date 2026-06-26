@@ -1,0 +1,122 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 13 17 23;
+  --card: 22 27 34;
+  --border: 33 38 45;
+  --primary: 255 77 77;
+  --primary-dim: 178 34 34;
+  --ink: 230 237 243;
+  --ink-muted: 139 148 158;
+  --glass-bg: 22 27 34;
+  --glass-border: 255 255 255;
+}
+
+.light {
+  --bg: 246 248 250;
+  --card: 255 255 255;
+  --border: 208 215 222;
+  --ink: 31 35 40;
+  --ink-muted: 87 96 106;
+  --glass-bg: 255 255 255;
+  --glass-border: 31 35 40;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html,
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--ink));
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: rgb(var(--primary) / 0.3);
+  color: rgb(var(--ink));
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgb(var(--bg));
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--border));
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--primary-dim));
+}
+
+/* Visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid rgb(var(--primary));
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.glass {
+  background: rgb(var(--glass-bg) / 0.55);
+  border: 1px solid rgb(var(--glass-border) / 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.light .glass {
+  background: rgb(var(--glass-bg) / 0.75);
+}
+
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    rgb(var(--primary)) 0%,
+    rgb(var(--primary-dim)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: rgb(var(--primary));
+}
+
+.grid-overlay {
+  background-image: linear-gradient(rgb(var(--primary) / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--primary) / 0.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.section-pad {
+  padding-top: clamp(4rem, 8vw, 7rem);
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
